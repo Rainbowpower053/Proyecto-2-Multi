@@ -15,16 +15,18 @@ def fmat(x,y): #Los parámetros a ingresar son las variables de estudio, en nues
 def monte_carlo(num): #El parámetro a ingresar es la cantidad de iteraciones.
     lista_puntos = [] #En esta lista se guardan los puntos generados por el comando random.random() <- Este comando genera números reales entre 0 y 1.
     for i in range(num): #Este ciclo for es para generar puntos num cantidad de veces, es decir vamos a generar una cantidad de puntos igual al número de iteraciones.
-        x = uniform(0, 1)
-        y = uniform(0, 1)   
-        lista_puntos.append([x,y])
+        x = uniform(0, 1) #Con el comando random.uniform(a, b), se generan números entre a y b, que en el contexto de la pregunta, sería entre 0 y 1.
+        y = uniform(0, 1) #Lo mismo que la variable x.
+        lista_puntos.append([x,y]) #Con este comando, nosotros guardamos los valores generados seudo aleatoriamente (por el comando random.seed()) en una lista que se utilizará para
+        #evaluar la función.
 
-    suma = 0
-    for i in range(num):
+    suma = 0 
+    for i in range(num): #Con este ciclo for, nostros vamos sumando los valores de las imagenes de las variables. Se utiliza la variable sum que sirve para ir acumulando los valores y la 
+        #z que es es la función evaluada por los valores de x e y.
         z = fmat(x, y)
-        suma += z
+        suma += z #Con este ccomando vamos acumlando los valores de z.
 
-    valor_final = suma/num #Esta variable es la aproximación del volumen de la función mediante el Método de Monte Carlo.
+    valor_final = suma/num #Esta variable es la aproximación del volumen de la función mediante el Método de Monte Carlo. Es importante destacar que el valor de (b-a) es 1.
     return valor_final
 
 x,y = symbols("x,y")
